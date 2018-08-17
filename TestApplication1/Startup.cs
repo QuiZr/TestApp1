@@ -32,7 +32,9 @@ namespace TestApplication1
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("test"));
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("test"));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
