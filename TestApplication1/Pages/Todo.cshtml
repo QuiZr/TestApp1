@@ -1,0 +1,23 @@
+﻿@page
+@model TestApplication1.Pages.TodoModel
+@{
+    ViewData["Title"] = "Todo";
+}
+
+<h2>Todo</h2>
+
+@foreach (var todo in Model.Todos)
+{
+    <div>
+        @todo.Name
+    </div>
+    <form method="POST">       
+        <button type="submit" asp-route-id="@todo.Id" asp-page-handler="CompleteTask">complete task</button>
+    </form>
+    <br />
+}
+
+<form method="POST">
+    <input type="text" name="name"/> 
+    <button type="submit" asp-page-handler="CreateTask">CreateTask</button>
+</form>
